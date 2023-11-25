@@ -96,5 +96,15 @@
     </div>
   </div>
 </div>
+<script>
+  function showErrorMessage(errorMessageState) {
+    const errorMessageElement = document.getElementById('error-message');
+    if (errorMessageState === true) {
+      errorMessageElement.style.display = 'contents';
+    } else if (errorMessageState === false) {
+      errorMessageElement.style.display = 'none';
+    }
+  };
+</script>
 </body>
 </html>
