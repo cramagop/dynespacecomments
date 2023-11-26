@@ -120,6 +120,24 @@
     };
     return true;
   };
+
+  function clearFields(arrayOfFields) {
+    for (let i=0; i<arrayOfFields.length; i++) {
+      arrayOfFields[i].value = '';
+    };
+  };
+
+  const submitButton = document.querySelector('button[type=submit]');
+  submitButton.addEventListener('click', (event)=>{
+    event.preventDefault();
+    
+    if (isFieldsFilled(formFields)) {
+      showErrorMessage(false);
+      clearFields(formFields);
+    } else {
+      showErrorMessage(true);
+    };
+  });
 </script>
 </body>
 </html>
