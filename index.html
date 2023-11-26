@@ -97,12 +97,6 @@
   </div>
 </div>
 <script>
-  const formFields =  [
-    document.getElementById('first-name'),
-    document.getElementById('last-name'),
-    document.getElementById('message')
-  ];
-
   function showErrorMessage(boolDisplaySwitch) {
     const errorMessageElement = document.getElementById('error-message');
     if (boolDisplaySwitch === true) {
@@ -127,12 +121,29 @@
     };
   };
 
+  function addComment(arrayOfFields) {
+    const commentsList = document.getElementById('comment-list');
+    const newComment = commentsList.lastElementChild.cloneNode(true);
+
+    newComment.querySelector('h3').innerText = `${arrayOfFields[0].value} ${arrayOfFields[1].value}`;
+    newComment.querySelector('p').innerText = `${arrayOfFields[2].value}`;
+
+    commentsList.appendChild(newComment);
+  };
+
   const submitButton = document.querySelector('button[type=submit]');
   submitButton.addEventListener('click', (event)=>{
     event.preventDefault();
     
+    const formFields =  [
+      document.getElementById('first-name'),
+      document.getElementById('last-name'),
+      document.getElementById('message')
+    ];
+
     if (isFieldsFilled(formFields)) {
       showErrorMessage(false);
+      addComment(formFields);
       clearFields(formFields);
     } else {
       showErrorMessage(true);
