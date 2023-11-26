@@ -97,13 +97,28 @@
   </div>
 </div>
 <script>
-  function showErrorMessage(errorMessageState) {
+  const formFields =  [
+    document.getElementById('first-name'),
+    document.getElementById('last-name'),
+    document.getElementById('message')
+  ];
+
+  function showErrorMessage(boolDisplaySwitch) {
     const errorMessageElement = document.getElementById('error-message');
-    if (errorMessageState === true) {
+    if (boolDisplaySwitch === true) {
       errorMessageElement.style.display = 'contents';
-    } else if (errorMessageState === false) {
+    } else if (boolDisplaySwitch === false) {
       errorMessageElement.style.display = 'none';
-    }
+    };
+  };
+
+  function isFieldsFilled(arrayOfFields) {
+    for (let i=0; i<arrayOfFields.length; i++) {
+      if (!arrayOfFields[i].value) {
+        return false;
+      };
+    };
+    return true;
   };
 </script>
 </body>
